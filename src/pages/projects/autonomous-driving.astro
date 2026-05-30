@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+---
+
+<BaseLayout title="自动驾驶实践 | 项目展示" description="智能车辆工程和自动驾驶相关实践记录。">
+  <section class="py-16">
+    <SectionTitle
+      eyebrow="Project"
+      title="自动驾驶实践"
+      description="这里可以记录 Apollo 比赛经历、仿真问题、路径规划、控制算法和工程复盘。"
+    />
+
+    <div data-reveal class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8">
+      <p>
+        第一版先作为占位页，后续可以按专题拆分：比赛复盘、仿真环境、算法笔记、工程调试和踩坑记录。
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import SectionTitle from './SectionTitle.astro';
+
+const projects = [
+  {
+    title: 'LeafVault',
+    description: '本地优先、端到端加密、支持 PWA 的个人生活管理与加密日记应用。',
+    tags: ['FastAPI', 'SQLite', 'PWA', 'E2EE'],
+    href: '/projects/leafvault',
+    accent: 'from-emerald-100 via-lime-50 to-sky-100',
+  },
+  {
+    title: '个人网站',
+    description: '用于展示项目、博客、学习记录和个人审美的小清新动态网站。',
+    tags: ['Astro', 'Tailwind', 'MDX'],
+    href: '/projects/personal-site',
+    accent: 'from-sky-100 via-white to-emerald-100',
+  },
+  {
+    title: '自动驾驶实践',
+    description: '记录 Apollo 比赛、智能车辆工程学习和仿真相关经验。',
+    tags: ['Apollo', 'Python', 'C++'],
+    href: '/projects/autonomous-driving',
+    accent: 'from-slate-100 via-white to-blue-100',
+  },
+];
+---
+
+<section class="py-16">
+  <SectionTitle
+    eyebrow="Projects"
+    title="正在成长的项目集"
+    description="这里不只是放链接，而是把每个项目的思路、技术选择、截图和复盘都整理出来。"
+  />
+
+  <div class="grid gap-5 md:grid-cols-3">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+---
+
+<BaseLayout title="关于我 | 希儿" description="关于希儿的学习方向、项目经历和个人网站说明。">
+  <section class="py-16">
+    <SectionTitle
+      eyebrow="About"
+      title="关于我"
+      description="这里先放第一版内容，后面可以继续补充更正式的自我介绍、比赛经历、技术栈和联系方式。"
+    />
+
+    <div class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8" data-reveal>
+      <p>
+        我是一名智能车辆工程专业学生，目前在独立开发 LeafVault，也在学习如何把一个完整 Web 项目从本地开发、测试、部署到正式上线。
+      </p>
+      <p class="mt-5">
+        这个个人网站主要用来展示项目、记录学习过程，以及整理 Web 开发、自动驾驶、智能车辆工程相关的内容。
+      </p>
+      <p class="mt-5">
+        第一版网站会保持轻量：先完成清晰结构和基础动效，再逐步增加项目截图、博客内容、页面过渡和更精致的视觉细节。
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+---
+
+<BaseLayout title="个人网站 | 项目展示" description="Astro + Tailwind CSS + TypeScript + MDX 搭建的个人网站。">
+  <section class="py-16">
+    <SectionTitle
+      eyebrow="Project"
+      title="个人网站"
+      description="这个站点本身也是一个项目：用 Astro 做骨架，用 Tailwind 做小清新视觉，用 MDX 管理内容，用轻量 CSS 动效增加记忆点。"
+    />
+
+    <div data-reveal class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8">
+      <p>
+        第一版目标不是一次性做成复杂作品集，而是先把首页、项目页、博客页、关于页跑通。后续可以逐步增加页面过渡、滚动视差、鼠标光效和更高级的项目展示动画。
+      </p>
+    </div>
+  </section>
+</BaseLayout>

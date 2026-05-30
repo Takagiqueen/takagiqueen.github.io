@@ -1,0 +1,29 @@
+---
+import SectionTitle from './SectionTitle.astro';
+---
+
+<section class="py-16">
+  <SectionTitle
+    eyebrow="About"
+    title="我想把工程能力和审美表达结合起来"
+    description="目前主要在学习 Web 全栈开发、个人应用设计、智能车辆工程和自动驾驶相关内容。"
+  />
+
+  <div class="grid gap-5 md:grid-cols-3">
+    <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+      <p class="text-3xl">🌱</p>
+      <h3 class="mt-4 font-bold text-emerald-950">Web 开发</h3>
+      <p class="mt-3 leading-7 text-slate-600">从 LeafVault 开始实践 FastAPI、PWA、安全登录、加密存储和部署流程。</p>
+    </div>
+    <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+      <p class="text-3xl">🚗</p>
+      <h3 class="mt-4 font-bold text-emerald-950">智能车辆</h3>
+      <p class="mt-3 leading-7 text-slate-600">关注自动驾驶仿真、路径规划、工程实现和车辆相关课程实践。</p>
+    </div>
+    <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+      <p class="text-3xl">🌊</p>
+      <h3 class="mt-4 font-bold text-emerald-950">个人记录</h3>
+      <p class="mt-3 leading-7 text-slate-600">用博客记录开发日志、学习笔记、项目复盘和一些生活中的灵感。</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts
+    .filter((post) => !post.data.draft)
+    .map((post) => ({
+      params: { slug: post.id },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} | 希儿`} description={post.data.description}>
+  <article class="mx-auto max-w-3xl py-16">
+    <a href="/blog" class="text-sm font-medium text-emerald-700 hover:text-emerald-900">← 返回博客</a>
+
+    <header class="mt-8">
+      <p class="text-sm text-slate-500">{post.data.pubDate.toLocaleDateString('zh-CN')}</p>
+      <h1 class="mt-4 text-4xl font-black tracking-tight text-emerald-950 sm:text-5xl">{post.data.title}</h1>
+      <p class="mt-5 text-lg leading-8 text-slate-600">{post.data.description}</p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {post.data.tags.map((tag) => <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">{tag}</span>)}
+      </div>
+    </header>
+
+    <div class="glass-card article-content mt-10 rounded-[2rem] p-6 leading-8 sm:p-8">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

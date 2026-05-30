@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+---
+
+<BaseLayout title="LeafVault | 项目展示" description="LeafVault 项目介绍：安全登录、加密日记、本地优先和 PWA。">
+  <section class="py-16">
+    <SectionTitle
+      eyebrow="Project"
+      title="LeafVault"
+      description="一个本地优先、端到端加密、支持 PWA 的个人生活管理与加密日记应用。"
+    />
+
+    <div class="grid gap-5 md:grid-cols-2">
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">项目定位</h3>
+        <p class="mt-4 leading-8 text-slate-600">
+          LeafVault 是一个更偏应用型的项目，重点是安全登录、加密日记、本地数据、同步和部署稳定性。
+        </p>
+      </div>
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">后续可以补充</h3>
+        <p class="mt-4 leading-8 text-slate-600">
+          项目截图、功能清单、技术架构、安全设计、部署流程、版本更新日志和 GitHub 链接。
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
