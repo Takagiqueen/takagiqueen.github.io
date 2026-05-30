@@ -4,8 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // 部署前把这里改成你的正式域名，例如：https://leafvault.cn
-  site: 'https://example.com',
+    site: 'https://takagiqueen.github.io',
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
