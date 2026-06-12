@@ -1,15 +1,24 @@
-node_modules/
+﻿node_modules/
 dist/
 .astro/
+
 .env
 .env.*
+.env.local
+
+.vscode/
+.DS_Store
+
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
-.DS_Store
-.env.local
-.vscode/
+
 package-lock.json
-pnpm-lock.yaml
+
+# Local AI/editor helper files, not for public repository
+CLAUDE.md
+AGENTS.md
 .editorconfig
+
+# Old server deployment notes, not needed for GitHub Pages
 deploy/
