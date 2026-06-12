@@ -9,3 +9,7 @@ yarn-debug.log*
 .DS_Store
 .env.local
 .vscode/
+package-lock.json
+pnpm-lock.yaml
+.editorconfig
+deploy/
