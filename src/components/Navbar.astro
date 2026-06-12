@@ -98,14 +98,7 @@ function isActive(href: string): boolean {
 
 <script>
   (function () {
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    if (!toggle || !menu) return;
-
-    let open = false;
-
-    toggle.addEventListener('click', () => {
-      open = !open;
+    function setMenuOpen(toggle: HTMLElement, menu: HTMLElement, open: boolean) {
       toggle.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
@@ -119,19 +112,50 @@ function isActive(href: string): boolean {
         menu.classList.remove('max-h-96', 'opacity-100');
         document.body.classList.remove('overflow-hidden');
       }
-    });
+    }
 
-    // 点击菜单内链接后自动关闭
-    menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        open = false;
-        toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', '打开菜单');
-        menu.classList.add('pointer-events-none', 'max-h-0', 'opacity-0');
-        menu.classList.remove('max-h-96', 'opacity-100');
-        document.body.classList.remove('overflow-hidden');
+    function getMenuElements(): { toggle: HTMLElement; menu: HTMLElement } | null {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (!toggle || !menu) return null;
+      return { toggle, menu };
+    }
+
+    function initMobileMenu() {
+      const elements = getMenuElements();
+      if (!elements) return;
+
+      const { toggle, menu } = elements;
+      if (toggle.dataset.menuBound === 'true') return;
+
+      toggle.dataset.menuBound = 'true';
+      setMenuOpen(toggle, menu, false);
+
+      toggle.addEventListener('click', () => {
+        const nextOpen = toggle.getAttribute('aria-expanded') !== 'true';
+        setMenuOpen(toggle, menu, nextOpen);
       });
-    });
+
+      // 点击菜单内链接后自动关闭，并让 ClientRouter 接管后重新绑定新页面按钮。
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          setMenuOpen(toggle, menu, false);
+        });
+      });
+    }
+
+    function closeCurrentMenu() {
+      const elements = getMenuElements();
+      if (!elements) {
+        document.body.classList.remove('overflow-hidden');
+        return;
+      }
+
+      setMenuOpen(elements.toggle, elements.menu, false);
+    }
+
+    initMobileMenu();
+    document.addEventListener('astro:page-load', initMobileMenu);
+    document.addEventListener('astro:before-swap', closeCurrentMenu);
   })();
 </script>
