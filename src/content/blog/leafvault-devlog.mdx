@@ -1,7 +1,7 @@
 ---
 title: 'LeafVault 开发复盘：为什么我选择 Local-first'
 description: '记录我从个人记录需求出发，如何把 LeafVault 设计成本地优先、隐私友好、可恢复的个人应用。'
-pubDate: '2026-05-28'
+pubDate: '2026-06-3'
 category: '项目复盘'
 takeaway: '我开始意识到，个人数据应用首先要保证数据在用户手里、离线可用、可备份恢复，再讨论同步和体验。'
 tags: ['LeafVault', 'Local-first', 'IndexedDB', '加密备份']
@@ -36,7 +36,7 @@ LeafVault 前端最初使用原生 JavaScript 和 Tailwind CSS。这个选择不
 
 IndexedDB、Service Worker、Cache Storage、PWA manifest、Blob 图片恢复，这些问题如果被框架包得太厚，我反而不容易理解真正的边界在哪里。
 
-对一个单人学生项目来说，先控制复杂度更重要。等数据模型、恢复流程和缓存策略稳定之后，再考虑是否引入更完整的前端架构会更合适。
+对一个我这样的单人学生项目来说，我认为先控制复杂度更重要。等数据模型、恢复流程和缓存策略稳定之后，再考虑是否引入更完整的前端架构会更合适。
 
 ## 目前阶段成果
 
