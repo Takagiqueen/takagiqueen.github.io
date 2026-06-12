@@ -1,73 +1,113 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
+
+const goals = [
+  '本地优先：用 IndexedDB 作为浏览器端主工作区，断网时也能继续查看和管理记录。',
+  '隐私保护：围绕日记、图片和账本做加密备份，服务端尽量只保存密文快照。',
+  '长期保存：把日记、账本、图片和生活日历放在同一个可恢复的数据体系里。',
+  '可部署：支持 Docker 部署和生产配置，逐步接近可自托管的个人应用。',
+];
+
+const stack = [
+  { label: '后端', items: ['FastAPI', 'SQLite', '登录态', '上传校验'] },
+  { label: '前端', items: ['原生 JavaScript', 'Tailwind CSS', '响应式页面'] },
+  { label: '本地数据', items: ['IndexedDB', 'localStorage', 'Blob 恢复'] },
+  { label: '工程化', items: ['PWA', 'Service Worker', 'Docker', 'pytest'] },
+];
+
+const challenges = [
+  {
+    title: 'PWA 缓存旧版本',
+    text: '我遇到过页面已经修改，但用户仍看到旧版本的问题。后来我把静态资源、页面壳和接口数据分开考虑，理解到缓存策略会直接影响用户对产品可靠性的判断。',
+  },
+  {
+    title: '数据恢复链路',
+    text: '恢复不是导入成功就结束。需要验证本地缓存被清理后，日记元数据、账本、图片引用和密文快照能否重新形成可用状态。',
+  },
+  {
+    title: '图片备份异常',
+    text: '图片比文本更容易暴露边界问题。我需要区分 Blob、元数据、渲染顺序、重复恢复和跨账号缓存干扰，才能判断问题到底出在哪里。',
+  },
+  {
+    title: '同步复杂度控制',
+    text: '我没有一开始做复杂实时同步，而是先做手动同步、密文快照和恢复流程。对个人数据应用来说，避免静默覆盖比看起来自动更重要。',
+  },
+  {
+    title: '移动端兼容',
+    text: '电脑端跑通只是第一步。手机端的登录、PWA 安装、键盘视口、缓存残留和图片显示都需要单独验证。',
+  },
+];
 ---
 
-<BaseLayout title="LeafVault | 项目展示" description="LeafVault：本地优先、注重隐私的个人生活记录 Web 应用。全栈独立开发，涵盖 FastAPI、SQLite、PWA、IndexedDB、Docker。">
+<BaseLayout title="LeafVault | 项目展示" description="LeafVault：本地优先、注重隐私和长期保存的个人生活记录 Web 应用。">
   <section class="py-16">
     <SectionTitle
       eyebrow="核心项目"
       title="LeafVault"
-      description="一个本地优先、注重隐私和长期保存的个人生活记录 Web 应用。"
+      description="一个围绕日记、账本、图片和生活轨迹做长期保存的个人生活记录应用。"
     />
 
-    <!-- 定位 -->
     <div data-reveal class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8">
-      <h3 class="text-xl font-bold text-emerald-950">项目定位</h3>
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700">项目背景</p>
+      <h3 class="mt-3 text-2xl font-bold text-emerald-950">为什么我要做 LeafVault</h3>
       <p class="mt-4">
-        LeafVault 不是日记软件。我想解决的问题很具体：<strong>个人数据怎么长期安全保存、离线也能用、不被平台绑定、能自己部署</strong>。
+        LeafVault 最初不是为了做一个日记 Demo，而是因为我想要一个真正属于自己的个人生活记录工具。它需要长期保存日记、图片、账本、心情和生活轨迹，也要尽量保护隐私。
       </p>
       <p class="mt-4">
-        我独立做了后端 API、数据库、前端交互、PWA、Docker 部署——完整一条链路走下来。
+        这个项目让我从“写页面”进入到本地数据、离线缓存、备份恢复、安全边界、同步取舍和部署测试这些更完整的工程问题中。
       </p>
     </div>
 
-    <!-- 技术栈 -->
     <div class="mt-5 grid gap-5 md:grid-cols-2">
       <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">技术栈</h3>
-        <div class="mt-4 flex flex-wrap gap-2">
-          {['FastAPI', 'SQLite', 'JavaScript', 'Tailwind CSS', 'IndexedDB', 'PWA', 'Docker', 'pytest'].map((t) => (
-            <span class="rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">{t}</span>
+        <h3 class="text-xl font-bold text-emerald-950">核心目标</h3>
+        <div class="mt-4 space-y-3">
+          {goals.map((goal) => (
+            <p class="rounded-2xl bg-emerald-50/60 px-4 py-3 text-sm leading-6 text-slate-600 ring-1 ring-emerald-900/5">{goal}</p>
           ))}
         </div>
       </div>
+
       <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">功能模块</h3>
-        <div class="mt-4 flex flex-wrap gap-2">
-          {['日记', '图片', '心情记录', '账本', '统计报表', '生活日历', '加密备份', '云端同步'].map((t) => (
-            <span class="rounded-full bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">{t}</span>
+        <h3 class="text-xl font-bold text-emerald-950">技术方案</h3>
+        <div class="mt-4 space-y-4">
+          {stack.map((group) => (
+            <div>
+              <p class="text-sm font-semibold text-emerald-900">{group.label}</p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span class="rounded-full bg-emerald-100/55 px-3 py-1 text-sm font-medium text-emerald-700 ring-1 ring-emerald-900/5">{item}</span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </div>
 
-    <!-- 核心亮点 -->
-    <div class="mt-5 grid gap-5 md:grid-cols-2">
-      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">全栈独立开发</h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          一个人完成从 FastAPI 后端、SQLite 数据库设计、原生 JavaScript 前端交互到 PWA 安装、Docker 部署的全部环节。项目可本地运行、可服务器自托管。
-        </p>
+    <div data-reveal class="glass-card mt-5 rounded-[2rem] p-6 sm:p-8">
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700">关键难点</p>
+      <h3 class="mt-3 text-2xl font-bold text-emerald-950">我实际处理过的问题</h3>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        {challenges.map((challenge) => (
+          <div class="rounded-[1.35rem] border border-white/50 bg-white/35 p-5 ring-1 ring-emerald-900/5">
+            <h4 class="font-bold text-emerald-950">{challenge.title}</h4>
+            <p class="mt-3 text-sm leading-7 text-slate-600">{challenge.text}</p>
+          </div>
+        ))}
       </div>
-      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">Local-first 架构</h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          采用 IndexedDB 做浏览器端本地缓存，离线也能查看和编辑数据。网络恢复后自动同步。不是"能打开网页"，是真的断网也能用。
-        </p>
-      </div>
-      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">隐私与安全</h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          实现加密备份、云端密文快照与同步。服务端只保存必要数据，不存明文敏感内容。完成登录态管理、安全响应头、CORS/CSP 策略、CSRF 防护、上传校验和 XSS 清理。
-        </p>
-      </div>
-      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">工程实践</h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          解决过 PWA 缓存策略、手机端兼容、数据恢复、同步冲突处理、Docker 部署和 pytest 测试回归等实际工程问题。每个问题的解决过程都写成了博客复盘。
-        </p>
-      </div>
+    </div>
+
+    <div data-reveal class="glass-card mt-5 rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8">
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700">复盘总结</p>
+      <h3 class="mt-3 text-2xl font-bold text-emerald-950">从功能页面到工程闭环</h3>
+      <p class="mt-4">
+        LeafVault 让我意识到，一个真实项目不是把功能堆出来就结束。数据能不能保存、缓存会不会困住旧版本、图片能不能恢复、同步会不会覆盖用户内容、部署环境能不能稳定运行，这些都会影响产品是否可信。
+      </p>
+      <p class="mt-4">
+        我还不是“精通很多技术”的开发者，但这个项目让我形成了更清晰的工程习惯：先定位问题，再控制复杂度，最后把解决过程写成可复盘的记录。
+      </p>
     </div>
   </section>
 </BaseLayout>
