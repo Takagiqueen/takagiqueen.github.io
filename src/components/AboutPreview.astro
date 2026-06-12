@@ -1,29 +1,43 @@
 ---
 import SectionTitle from './SectionTitle.astro';
+import FocusIcon from './FocusIcon.astro';
 ---
 
 <section class="py-16">
   <SectionTitle
     eyebrow="About"
-    title="我想把工程能力和审美表达结合起来"
-    description="目前主要在学习 Web 全栈开发、个人应用设计、智能车辆工程和自动驾驶相关内容。"
+    title="把工程能力和审美表达结合起来"
+    description="智能车辆工程背景，在学 Web 全栈和自动驾驶。"
   />
 
-  <div class="grid gap-5 md:grid-cols-3">
-    <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-      <p class="text-3xl">🌱</p>
-      <h3 class="mt-4 font-bold text-emerald-950">Web 开发</h3>
-      <p class="mt-3 leading-7 text-slate-600">从 LeafVault 开始实践 FastAPI、PWA、安全登录、加密存储和部署流程。</p>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
+      <FocusIcon kind="code" />
+      <h3 class="mt-4 font-bold text-emerald-950">工程开发</h3>
+      <p class="mt-3 leading-7 text-slate-600">
+        独立做了 LeafVault：FastAPI 写后端、SQLite 管数据、PWA 前端、Docker 部署。
+      </p>
     </div>
-    <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-      <p class="text-3xl">🚗</p>
+    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
+      <FocusIcon kind="vehicle" />
       <h3 class="mt-4 font-bold text-emerald-950">智能车辆</h3>
-      <p class="mt-3 leading-7 text-slate-600">关注自动驾驶仿真、路径规划、工程实现和车辆相关课程实践。</p>
+      <p class="mt-3 leading-7 text-slate-600">
+        智能车辆工程专业在读，参与 Apollo 自动驾驶比赛，学习路径规划和仿真技术。
+      </p>
     </div>
-    <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-      <p class="text-3xl">🌊</p>
-      <h3 class="mt-4 font-bold text-emerald-950">个人记录</h3>
-      <p class="mt-3 leading-7 text-slate-600">用博客记录开发日志、学习笔记、项目复盘和一些生活中的灵感。</p>
+    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
+      <FocusIcon kind="visual" />
+      <h3 class="mt-4 font-bold text-emerald-950">视觉创作</h3>
+      <p class="mt-3 leading-7 text-slate-600">
+        学过 Blender、Lightroom、摄影构图和光影，对画面和配色比较敏感。
+      </p>
+    </div>
+    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
+      <FocusIcon kind="language" />
+      <h3 class="mt-4 font-bold text-emerald-950">英语学习</h3>
+      <p class="mt-3 leading-7 text-slate-600">
+        英语六级已过，坚持每天背单词，目标是能流畅阅读技术文档。
+      </p>
     </div>
   </div>
 </section>

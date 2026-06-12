@@ -3,18 +3,32 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
 ---
 
-<BaseLayout title="个人网站 | 项目展示" description="Astro + Tailwind CSS + TypeScript + MDX 搭建的个人网站。">
+<BaseLayout title="个人网站 | 项目展示" description="Astro + Tailwind CSS + TypeScript + MDX 搭建的个人网站，用于展示项目和记录学习过程。">
   <section class="py-16">
     <SectionTitle
-      eyebrow="Project"
+      eyebrow="项目"
       title="个人网站"
-      description="这个站点本身也是一个项目：用 Astro 做骨架，用 Tailwind 做小清新视觉，用 MDX 管理内容，用轻量 CSS 动效增加记忆点。"
+      description="这个站点本身也是一个项目——用 Astro 做骨架，用 Tailwind 做视觉，用 MDX 管理内容。目标是清晰、轻量、好维护。"
     />
 
-    <div data-reveal class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8">
-      <p>
-        第一版目标不是一次性做成复杂作品集，而是先把首页、项目页、博客页、关于页跑通。后续可以逐步增加页面过渡、滚动视差、鼠标光效和更高级的项目展示动画。
-      </p>
+    <div class="grid gap-5 md:grid-cols-2">
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">技术选择</h3>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {['Astro', 'Tailwind CSS', 'TypeScript', 'MDX'].map((t) => (
+            <span class="rounded-full bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">{t}</span>
+          ))}
+        </div>
+        <p class="mt-4 leading-7 text-slate-600">
+          Astro 很适合内容型站点：构建产物零 JS 负担，MDX 方便写博客，Tailwind 让样式维护简单可控。
+        </p>
+      </div>
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">设计方向</h3>
+        <p class="mt-4 leading-7 text-slate-600">
+          小清新路线：淡绿、浅蓝、毛玻璃、柔和渐变。不加复杂 3D 和粒子。用间距、圆角、轻量动效来让页面看起来干净舒服。
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>

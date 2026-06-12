@@ -1,26 +1,79 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
+import FocusIcon from '@components/FocusIcon.astro';
 ---
 
-<BaseLayout title="关于我 | 希儿" description="关于希儿的学习方向、项目经历和个人网站说明。">
+<BaseLayout title="关于我 | 希儿" description="智能车辆工程专业学生，正在学习 Web 全栈和自动驾驶。独立开发 LeafVault，关注隐私、安全和产品体验。">
   <section class="py-16">
     <SectionTitle
       eyebrow="About"
       title="关于我"
-      description="这里先放第一版内容，后面可以继续补充更正式的自我介绍、比赛经历、技术栈和联系方式。"
+      description="智能车辆工程专业学生，从 Python 和 C++ 开始接触编程，目前在学习 Web 全栈开发与自动驾驶。"
     />
 
-    <div class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8" data-reveal>
-      <p>
-        我是一名智能车辆工程专业学生，目前在独立开发 LeafVault，也在学习如何把一个完整 Web 项目从本地开发、测试、部署到正式上线。
+    <!-- 工程开发 -->
+    <div data-reveal class="group glass-card mb-5 rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)] sm:p-8">
+      <div class="flex items-center gap-4">
+        <FocusIcon kind="code" />
+        <h3 class="text-xl font-bold text-emerald-950">工程开发</h3>
+      </div>
+      <p class="mt-4 leading-8 text-slate-600">
+        独立开发 LeafVault：FastAPI 写后端、SQLite 存数据、原生 JavaScript + Tailwind CSS 做前端、PWA + Docker 部署。目前在补安全细节、测试和文档。
       </p>
-      <p class="mt-5">
-        这个个人网站主要用来展示项目、记录学习过程，以及整理 Web 开发、自动驾驶、智能车辆工程相关的内容。
+      <div class="mt-4 flex flex-wrap gap-2">
+        {['FastAPI', 'SQLite', 'JavaScript', 'Tailwind CSS', 'Astro', 'TypeScript', 'MDX', 'PWA', 'IndexedDB', 'Docker', 'pytest', 'Git'].map((s) => (
+          <span class="rounded-full bg-emerald-100/55 px-3 py-1 text-sm font-medium text-emerald-700 ring-1 ring-emerald-900/5 backdrop-blur">{s}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- 智能车辆 -->
+    <div data-reveal class="group glass-card mb-5 rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)] sm:p-8">
+      <div class="flex items-center gap-4">
+        <FocusIcon kind="vehicle" />
+        <h3 class="text-xl font-bold text-emerald-950">智能车辆工程</h3>
+      </div>
+      <p class="mt-4 leading-8 text-slate-600">
+        智能车辆工程专业在读，学自动驾驶仿真、路径规划和工程实现。参加过 Apollo 自动驾驶比赛，仿真调试和工程复盘让我养成了先理清问题边界再动手的习惯。
       </p>
-      <p class="mt-5">
-        第一版网站会保持轻量：先完成清晰结构和基础动效，再逐步增加项目截图、博客内容、页面过渡和更精致的视觉细节。
+      <div class="mt-4 flex flex-wrap gap-2">
+        {['Python', 'C++', 'Apollo', '仿真', '路径规划', '控制算法', 'SolidWorks'].map((s) => (
+          <span class="rounded-full bg-sky-100/55 px-3 py-1 text-sm font-medium text-sky-700 ring-1 ring-sky-900/5 backdrop-blur">{s}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- 视觉创作 -->
+    <div data-reveal class="group glass-card mb-5 rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)] sm:p-8">
+      <div class="flex items-center gap-4">
+        <FocusIcon kind="visual" />
+        <h3 class="text-xl font-bold text-emerald-950">视觉创作</h3>
+      </div>
+      <p class="mt-4 leading-8 text-slate-600">
+        学过 Blender 三维建模、Lightroom 照片后期和摄影基础。了解构图、光影、色彩怎么搭配。这些东西让我做前端界面时，会在意间距、配色和画面节奏——不只是把功能堆上去。
       </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {['Blender', 'Lightroom', '摄影', '构图', 'SolidWorks'].map((s) => (
+          <span class="rounded-full bg-amber-100/55 px-3 py-1 text-sm font-medium text-amber-700 ring-1 ring-amber-900/5 backdrop-blur">{s}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- 英语 & AI 工具 -->
+    <div data-reveal class="group glass-card mb-5 rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)] sm:p-8">
+      <div class="flex items-center gap-4">
+        <FocusIcon kind="language" />
+        <h3 class="text-xl font-bold text-emerald-950">英语学习 & AI 工具</h3>
+      </div>
+      <p class="mt-4 leading-8 text-slate-600">
+        英语六级过了，每天还在坚持背单词。接下来想把口语练好，目标是能流畅读技术文档和英文教程。玩过 AstrBot，给 QQ 机器人接入了 AI，大概弄清楚了 API Key 管理、消息格式处理和指令路由怎么搞。
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {['英语六级', '每日记词', '技术文档阅读', 'AstrBot'].map((s) => (
+          <span class="rounded-full bg-violet-100/55 px-3 py-1 text-sm font-medium text-violet-700 ring-1 ring-violet-900/5 backdrop-blur">{s}</span>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,29 @@
+---
+const leaves = [
+  { src: '/images/nature/leaf-1.webp', left: '7%', size: '34px', duration: '25s', delay: '-4s', drift: '34px', driftMid: '19px', driftBack: '-12px', opacity: '0.28', start: '-20deg', mid: '48deg', end: '116deg' },
+  { src: '/images/nature/leaf-2.webp', left: '18%', size: '26px', duration: '31s', delay: '-18s', drift: '-42px', driftMid: '-23px', driftBack: '15px', opacity: '0.22', start: '18deg', mid: '-36deg', end: '-104deg' },
+  { src: '/images/nature/leaf-1.webp', left: '31%', size: '30px', duration: '29s', delay: '-10s', drift: '52px', driftMid: '29px', driftBack: '-18px', opacity: '0.24', start: '6deg', mid: '78deg', end: '154deg' },
+  { src: '/images/nature/leaf-2.webp', left: '54%', size: '28px', duration: '34s', delay: '-23s', drift: '-38px', driftMid: '-21px', driftBack: '13px', opacity: '0.2', start: '-14deg', mid: '34deg', end: '102deg' },
+  { src: '/images/nature/leaf-1.webp', left: '82%', size: '36px', duration: '28s', delay: '-14s', drift: '44px', driftMid: '24px', driftBack: '-15px', opacity: '0.25', start: '24deg', mid: '92deg', end: '170deg' },
+  { src: '/images/nature/leaf-2.webp', left: '92%', size: '24px', duration: '36s', delay: '-7s', drift: '-58px', driftMid: '-32px', driftBack: '20px', opacity: '0.18', start: '-32deg', mid: '-72deg', end: '-138deg' },
+  { src: '/images/nature/leaf-1.webp', left: '42%', size: '22px', duration: '39s', delay: '-30s', drift: '30px', driftMid: '17px', driftBack: '-10px', opacity: '0.16', start: '14deg', mid: '54deg', end: '124deg', extra: true },
+  { src: '/images/nature/leaf-2.webp', left: '68%', size: '31px', duration: '33s', delay: '-20s', drift: '-46px', driftMid: '-25px', driftBack: '16px', opacity: '0.2', start: '-8deg', mid: '-58deg', end: '-126deg', extra: true },
+  { src: '/images/nature/leaf-1.webp', left: '12%', size: '25px', duration: '41s', delay: '-33s', drift: '62px', driftMid: '34px', driftBack: '-22px', opacity: '0.17', start: '38deg', mid: '104deg', end: '188deg', extra: true },
+  { src: '/images/nature/leaf-2.webp', left: '74%', size: '23px', duration: '37s', delay: '-27s', drift: '40px', driftMid: '22px', driftBack: '-14px', opacity: '0.16', start: '-24deg', mid: '18deg', end: '86deg', extra: true },
+];
+---
+
+<div class="falling-leaves absolute inset-0" aria-hidden="true">
+  {
+    leaves.map((leaf) => (
+      <img
+        src={leaf.src}
+        alt=""
+        decoding="async"
+        draggable="false"
+        class:list={['falling-leaf', leaf.extra && 'is-extra']}
+        style={`--leaf-left: ${leaf.left}; --leaf-size: ${leaf.size}; --leaf-duration: ${leaf.duration}; --leaf-delay: ${leaf.delay}; --leaf-drift: ${leaf.drift}; --leaf-drift-mid: ${leaf.driftMid}; --leaf-drift-back: ${leaf.driftBack}; --leaf-opacity: ${leaf.opacity}; --leaf-start: ${leaf.start}; --leaf-mid: ${leaf.mid}; --leaf-end: ${leaf.end};`}
+      />
+    ))
+  }
+</div>

@@ -4,10 +4,11 @@
   --bg: #f7fbf8;
   --text: #102018;
   --muted: #64736b;
-  --card: rgba(255, 255, 255, 0.68);
-  --border: rgba(49, 98, 73, 0.14);
+  --card: rgba(232, 250, 240, 0.38);
+  --border: rgba(255, 255, 255, 0.58);
   --leaf: #5eaa7a;
   --sky: #9bd6ff;
+  --reveal-ease: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 html {
@@ -18,10 +19,8 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--text);
-  background:
-    radial-gradient(circle at 12% 8%, rgba(155, 214, 255, 0.26), transparent 34rem),
-    radial-gradient(circle at 88% 18%, rgba(132, 211, 165, 0.25), transparent 30rem),
-    linear-gradient(180deg, #f8fcfb 0%, #f3faf5 48%, #f7fbf8 100%);
+  overflow-x: hidden;
+  background: var(--bg);
   font-family:
     ui-sans-serif,
     system-ui,
@@ -35,26 +34,91 @@ body {
   background: rgba(94, 170, 122, 0.22);
 }
 
+.nature-background {
+  background:
+    radial-gradient(circle at 16% 10%, rgba(201, 234, 255, 0.42), transparent 30rem),
+    linear-gradient(180deg, #fbfdfb 0%, #f3faf5 100%);
+}
+
+.nature-photo {
+  background-image:
+    linear-gradient(180deg, rgba(250, 253, 250, 0.14), rgba(248, 252, 249, 0.28)),
+    url("/images/nature/forest-bg.webp"),
+    radial-gradient(circle at 50% 14%, rgba(255, 255, 255, 0.5), transparent 34rem),
+    linear-gradient(135deg, #eef9ef, #f7fbf8 52%, #edf7f2);
+  background-position: center;
+  background-size: cover;
+  filter: saturate(1.08) contrast(1.03) brightness(1.02);
+  opacity: 0.86;
+  transform: scale(1.025);
+}
+
+.nature-texture {
+  background-image:
+    radial-gradient(circle at center, rgba(20, 63, 39, 0.08) 0.6px, transparent 0.8px),
+    linear-gradient(rgba(16, 32, 24, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 32, 24, 0.032) 1px, transparent 1px);
+  background-size: 3px 3px, 54px 54px, 54px 54px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.74), transparent 82%);
+  opacity: 0.24;
+}
+
 /* 通用毛玻璃卡片 */
 .glass-card {
   border: 1px solid var(--border);
-  background: var(--card);
-  box-shadow: 0 24px 80px rgba(46, 86, 67, 0.12);
-  backdrop-filter: blur(18px);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(110, 231, 183, 0.2), transparent 18rem),
+    radial-gradient(circle at 88% 16%, rgba(186, 230, 253, 0.22), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.44), rgba(236, 253, 245, 0.28) 48%, rgba(240, 249, 255, 0.22)),
+    var(--card);
+  box-shadow:
+    0 24px 76px rgba(39, 78, 57, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: blur(24px) saturate(1.14);
+  backdrop-filter: blur(24px) saturate(1.14);
 }
 
-/* 滚动进入视野动画：由 BaseLayout 中的脚本控制 */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card {
+    background: linear-gradient(135deg, rgba(240, 253, 244, 0.9), rgba(240, 249, 255, 0.86));
+  }
+}
+
+/* 滚动进入视野动画：由 ScrollReveal 组件控制 */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translate3d(0, 22px, 0) scale(0.992);
   transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+    opacity var(--reveal-duration, 680ms) var(--reveal-ease),
+    transform var(--reveal-duration, 680ms) var(--reveal-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
 
 [data-reveal].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: auto;
+}
+
+.falling-leaves {
+  contain: layout paint;
+  z-index: 4;
+}
+
+.falling-leaf {
+  position: absolute;
+  top: -14vh;
+  left: var(--leaf-left);
+  width: var(--leaf-size);
+  height: auto;
+  opacity: var(--leaf-opacity);
+  filter: drop-shadow(0 14px 18px rgba(38, 84, 52, 0.1));
+  transform: translate3d(0, -14vh, 0) rotate(var(--leaf-start));
+  animation: leaf-fall var(--leaf-duration) linear infinite;
+  animation-delay: var(--leaf-delay);
+  will-change: transform;
+  user-select: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -71,6 +135,14 @@ body {
     opacity: 1;
     transform: none;
   }
+
+  .falling-leaves {
+    display: none;
+  }
+
+  .nature-photo {
+    transform: none;
+  }
 }
 
 @keyframes float-slow {
@@ -85,11 +157,26 @@ body {
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translate3d(0, 18px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes leaf-fall {
+  0% {
+    transform: translate3d(0, -14vh, 0) rotate(var(--leaf-start));
+  }
+  32% {
+    transform: translate3d(var(--leaf-drift-mid), 34vh, 0) rotate(var(--leaf-mid));
+  }
+  68% {
+    transform: translate3d(var(--leaf-drift-back), 74vh, 0) rotate(var(--leaf-start));
+  }
+  100% {
+    transform: translate3d(var(--leaf-drift), 116vh, 0) rotate(var(--leaf-end));
   }
 }
 
@@ -107,7 +194,7 @@ body {
 }
 
 .fade-up {
-  animation: fade-up 800ms ease both;
+  animation: fade-up 760ms var(--reveal-ease) both;
 }
 
 .fade-up-delay-1 {
@@ -180,3 +267,40 @@ body {
   color: inherit;
   padding: 0;
 }
+
+@media (max-width: 640px) {
+  .nature-photo {
+    opacity: 0.64;
+    background-position: center top;
+  }
+
+  .nature-texture {
+    opacity: 0.16;
+  }
+
+  .glass-card {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(110, 231, 183, 0.18), transparent 14rem),
+      radial-gradient(circle at 88% 16%, rgba(186, 230, 253, 0.18), transparent 14rem),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.46), rgba(236, 253, 245, 0.3) 48%, rgba(240, 249, 255, 0.24)),
+      var(--card);
+    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+    backdrop-filter: blur(18px) saturate(1.08);
+  }
+
+  [data-reveal] {
+    transform: translate3d(0, 14px, 0);
+    transition-duration: 560ms;
+  }
+
+  .falling-leaf {
+    animation-duration: 36s;
+    opacity: 0.16;
+  }
+
+  .falling-leaf.is-extra {
+    display: none;
+  }
+}
+
+/* ClientRouter 使用 Astro 内置默认 crossfade，无需自定义 transition CSS */

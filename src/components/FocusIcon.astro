@@ -1,0 +1,84 @@
+---
+interface Props {
+  kind: 'code' | 'vehicle' | 'visual' | 'language';
+}
+
+const { kind } = Astro.props;
+
+const styles = {
+  code: {
+    tile: 'from-emerald-200/95 via-teal-100/85 to-lime-100/80',
+    glow: 'bg-emerald-300/70',
+    shadow: 'shadow-emerald-900/10',
+  },
+  vehicle: {
+    tile: 'from-sky-200/95 via-cyan-100/85 to-emerald-100/80',
+    glow: 'bg-sky-300/70',
+    shadow: 'shadow-sky-900/10',
+  },
+  visual: {
+    tile: 'from-fuchsia-200/90 via-rose-100/85 to-amber-100/80',
+    glow: 'bg-fuchsia-300/65',
+    shadow: 'shadow-rose-900/10',
+  },
+  language: {
+    tile: 'from-violet-200/90 via-indigo-100/85 to-sky-100/80',
+    glow: 'bg-violet-300/65',
+    shadow: 'shadow-indigo-900/10',
+  },
+}[kind];
+---
+
+<span
+  class={`relative inline-grid size-12 shrink-0 place-items-center overflow-hidden rounded-[1.15rem] bg-gradient-to-br ${styles.tile} text-emerald-950 shadow-lg ${styles.shadow} ring-1 ring-white/55 transition duration-300 group-hover:-translate-y-0.5 group-hover:scale-105`}
+  aria-hidden="true"
+>
+  <span class={`absolute -right-2 -top-2 size-6 rounded-full ${styles.glow} blur-sm`}></span>
+  <span class="absolute inset-x-2 bottom-1 h-px bg-white/55"></span>
+  <svg
+    class="relative size-6"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.9"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    {kind === 'code' && (
+      <>
+        <path d="m9 8-4 4 4 4" />
+        <path d="m15 8 4 4-4 4" />
+        <path d="m13 5-2 14" />
+      </>
+    )}
+
+    {kind === 'vehicle' && (
+      <>
+        <path d="M5 14h14l-1.6-4.2A3 3 0 0 0 14.6 8H9.4a3 3 0 0 0-2.8 1.8L5 14Z" />
+        <path d="M7 14v3" />
+        <path d="M17 14v3" />
+        <path d="M8 17h8" />
+        <path d="M9 11h6" />
+      </>
+    )}
+
+    {kind === 'visual' && (
+      <>
+        <path d="M12 4l1.5 4.2L18 10l-4.5 1.8L12 16l-1.5-4.2L6 10l4.5-1.8L12 4Z" />
+        <path d="M5 17.5h6" />
+        <path d="M17 5.5h2" />
+        <path d="M18 16l1 1 1-1" />
+      </>
+    )}
+
+    {kind === 'language' && (
+      <>
+        <path d="M8 18 12 6l4 12" />
+        <path d="M9.4 14h5.2" />
+        <path d="M5 19h14" />
+        <path d="M17 6h2" />
+        <path d="M18 5v2" />
+      </>
+    )}
+  </svg>
+</span>

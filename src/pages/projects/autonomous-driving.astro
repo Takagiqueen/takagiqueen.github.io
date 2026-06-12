@@ -3,18 +3,38 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
 ---
 
-<BaseLayout title="自动驾驶实践 | 项目展示" description="智能车辆工程和自动驾驶相关实践记录。">
+<BaseLayout title="自动驾驶实践 | 项目展示" description="Apollo 自动驾驶比赛经历、仿真实践、路径规划与智能车辆工程学习记录。">
   <section class="py-16">
     <SectionTitle
-      eyebrow="Project"
-      title="自动驾驶实践"
-      description="这里可以记录 Apollo 比赛经历、仿真问题、路径规划、控制算法和工程复盘。"
+      eyebrow="项目经历"
+      title="Apollo 自动驾驶比赛"
+      description="参与百度 Apollo 自动驾驶仿真比赛，在路径规划、控制算法和工程调试中积累实践经验。"
     />
 
-    <div data-reveal class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8">
-      <p>
-        第一版先作为占位页，后续可以按专题拆分：比赛复盘、仿真环境、算法笔记、工程调试和踩坑记录。
-      </p>
+    <div class="grid gap-5 md:grid-cols-2">
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">比赛内容</h3>
+        <p class="mt-4 leading-8 text-slate-600">
+          在 Apollo 仿真环境中完成自动驾驶场景任务，涉及路径规划、障碍物避让、速度控制等模块的调试与优化。
+        </p>
+      </div>
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">技术积累</h3>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {['Python', 'C++', 'Apollo', '仿真', '路径规划', '控制算法'].map((t) => (
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700">{t}</span>
+          ))}
+        </div>
+        <p class="mt-4 leading-7 text-slate-600">
+          比赛让我搞懂了自动驾驶的基本架构：感知、规划、控制怎么协作。调参数的过程也逼着我养成了先定位问题再动手的习惯。
+        </p>
+      </div>
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6 md:col-span-2">
+        <h3 class="text-xl font-bold text-emerald-950">与 Web 开发的关联</h3>
+        <p class="mt-4 leading-8 text-slate-600">
+          车辆工程里对系统、数据流、状态边界的分析方式，和 Web 全栈开发其实是通的。比赛练出来的调试习惯——改一个参数就要完整回归一遍——后来做 LeafVault 的 pytest 测试时直接就用上了。
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>

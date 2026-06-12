@@ -3,25 +3,69 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
 ---
 
-<BaseLayout title="LeafVault | 项目展示" description="LeafVault 项目介绍：安全登录、加密日记、本地优先和 PWA。">
+<BaseLayout title="LeafVault | 项目展示" description="LeafVault：本地优先、注重隐私的个人生活记录 Web 应用。全栈独立开发，涵盖 FastAPI、SQLite、PWA、IndexedDB、Docker。">
   <section class="py-16">
     <SectionTitle
-      eyebrow="Project"
+      eyebrow="核心项目"
       title="LeafVault"
-      description="一个本地优先、端到端加密、支持 PWA 的个人生活管理与加密日记应用。"
+      description="一个本地优先、注重隐私和长期保存的个人生活记录 Web 应用。"
     />
 
-    <div class="grid gap-5 md:grid-cols-2">
+    <!-- 定位 -->
+    <div data-reveal class="glass-card rounded-[2rem] p-6 leading-8 text-slate-700 sm:p-8">
+      <h3 class="text-xl font-bold text-emerald-950">项目定位</h3>
+      <p class="mt-4">
+        LeafVault 不是日记软件。我想解决的问题很具体：<strong>个人数据怎么长期安全保存、离线也能用、不被平台绑定、能自己部署</strong>。
+      </p>
+      <p class="mt-4">
+        我独立做了后端 API、数据库、前端交互、PWA、Docker 部署——完整一条链路走下来。
+      </p>
+    </div>
+
+    <!-- 技术栈 -->
+    <div class="mt-5 grid gap-5 md:grid-cols-2">
       <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">项目定位</h3>
-        <p class="mt-4 leading-8 text-slate-600">
-          LeafVault 是一个更偏应用型的项目，重点是安全登录、加密日记、本地数据、同步和部署稳定性。
+        <h3 class="text-xl font-bold text-emerald-950">技术栈</h3>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {['FastAPI', 'SQLite', 'JavaScript', 'Tailwind CSS', 'IndexedDB', 'PWA', 'Docker', 'pytest'].map((t) => (
+            <span class="rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">{t}</span>
+          ))}
+        </div>
+      </div>
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">功能模块</h3>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {['日记', '图片', '心情记录', '账本', '统计报表', '生活日历', '加密备份', '云端同步'].map((t) => (
+            <span class="rounded-full bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">{t}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心亮点 -->
+    <div class="mt-5 grid gap-5 md:grid-cols-2">
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">全栈独立开发</h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          一个人完成从 FastAPI 后端、SQLite 数据库设计、原生 JavaScript 前端交互到 PWA 安装、Docker 部署的全部环节。项目可本地运行、可服务器自托管。
         </p>
       </div>
       <div data-reveal class="glass-card rounded-[1.75rem] p-6">
-        <h3 class="text-xl font-bold text-emerald-950">后续可以补充</h3>
-        <p class="mt-4 leading-8 text-slate-600">
-          项目截图、功能清单、技术架构、安全设计、部署流程、版本更新日志和 GitHub 链接。
+        <h3 class="text-xl font-bold text-emerald-950">Local-first 架构</h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          采用 IndexedDB 做浏览器端本地缓存，离线也能查看和编辑数据。网络恢复后自动同步。不是"能打开网页"，是真的断网也能用。
+        </p>
+      </div>
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">隐私与安全</h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          实现加密备份、云端密文快照与同步。服务端只保存必要数据，不存明文敏感内容。完成登录态管理、安全响应头、CORS/CSP 策略、CSRF 防护、上传校验和 XSS 清理。
+        </p>
+      </div>
+      <div data-reveal class="glass-card rounded-[1.75rem] p-6">
+        <h3 class="text-xl font-bold text-emerald-950">工程实践</h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          解决过 PWA 缓存策略、手机端兼容、数据恢复、同步冲突处理、Docker 部署和 pytest 测试回归等实际工程问题。每个问题的解决过程都写成了博客复盘。
         </p>
       </div>
     </div>

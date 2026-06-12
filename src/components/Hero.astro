@@ -1,59 +1,61 @@
-<section class="grid min-h-[calc(100vh-6rem)] items-center gap-10 py-16 lg:grid-cols-[1.1fr_0.9fr]">
-  <div>
-    <p class="fade-up inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white/60 px-4 py-2 text-sm text-emerald-800 shadow-sm backdrop-blur">
+<section class="grid min-h-0 items-start gap-8 py-8 sm:py-14 lg:min-h-[calc(100vh-6rem)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:py-16">
+  <div class="min-w-0">
+    <p class="fade-up inline-flex max-w-full items-center gap-2 rounded-full border border-emerald-900/10 bg-white/60 px-4 py-2 text-sm text-emerald-800 shadow-sm backdrop-blur">
       <span class="size-2 rounded-full bg-emerald-500"></span>
-      智能车辆工程 / Web 开发 / LeafVault
+      智能车辆工程 · Web 全栈 · LeafVault
     </p>
 
-    <h1 class="fade-up fade-up-delay-1 mt-6 text-5xl font-black tracking-tight text-emerald-950 sm:text-6xl lg:text-7xl">
+    <h1 class="fade-up fade-up-delay-1 mt-6 max-w-3xl break-all text-[clamp(2.15rem,10vw,3rem)] font-black leading-[0.98] tracking-tight text-emerald-950 sm:break-words sm:text-6xl lg:text-7xl">
       把想法，
-      <span class="relative inline-block">
-        做成发光的网页
-        <span class="absolute -bottom-2 left-0 h-3 w-full rounded-full bg-emerald-200/70 -z-10"></span>
+      <br class="sm:hidden" />
+      <span class="relative inline break-all sm:inline-block sm:break-words">
+        做成可用的产品
+<span class="absolute -bottom-2 left-0 hidden h-3 w-full rounded-full bg-emerald-200/70 -z-10 sm:block"></span>
       </span>
     </h1>
 
-    <p class="fade-up fade-up-delay-2 mt-6 max-w-2xl text-lg leading-9 text-slate-600">
-      你好，我是希儿。这里会记录我的 Web 开发、智能车辆学习、自动驾驶实践，以及个人项目 LeafVault 的成长过程。
+    <p class="fade-up fade-up-delay-2 mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-9">
+      智能车辆工程专业学生，在学 Web 全栈和自动驾驶。
+      从后端 API、数据库到前端、PWA 部署，一个人把 LeafVault 完整做了出来。
     </p>
 
     <div class="fade-up fade-up-delay-3 mt-8 flex flex-wrap gap-3">
-      <a href="/projects" class="rounded-full bg-emerald-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-1 hover:bg-emerald-800">
-        查看项目
+      <a href="/projects/leafvault" class="rounded-full bg-emerald-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-1 hover:bg-emerald-800">
+        了解 LeafVault
       </a>
       <a href="/blog" class="rounded-full border border-emerald-900/10 bg-white/65 px-6 py-3 text-sm font-semibold text-emerald-900 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:bg-white">
-        阅读博客
+        阅读学习笔记
       </a>
     </div>
   </div>
 
-  <div class="fade-up fade-up-delay-2 relative mx-auto w-full max-w-md">
-    <div class="glass-card relative overflow-hidden rounded-[2rem] p-5">
+  <div class="fade-up fade-up-delay-2 relative mx-auto mt-2 min-w-0 w-full max-w-full sm:max-w-md lg:mt-0">
+    <div class="relative overflow-hidden rounded-[2rem] border border-white/60 bg-gradient-to-br from-white/65 via-emerald-50/45 to-lime-50/35 p-5 shadow-[0_20px_60px_rgba(6,78,59,0.12)] ring-1 ring-white/50 backdrop-blur-2xl sm:from-white/55 sm:via-emerald-50/35 sm:to-lime-50/25">
       <div class="absolute inset-x-0 top-0 h-24 overflow-hidden opacity-70">
         <div class="absolute -left-1/3 top-0 h-full w-2/3 skew-x-[-20deg] bg-white/40 blur-sm animate-[shimmer_5s_ease-in-out_infinite]"></div>
       </div>
 
-      <div class="relative rounded-[1.5rem] bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-6">
-        <div class="mb-8 flex items-center justify-between">
+      <div class="relative rounded-[1.5rem] border border-white/45 bg-gradient-to-br from-white/45 via-emerald-50/30 to-lime-50/20 p-5 shadow-inner shadow-white/30 backdrop-blur-xl sm:p-6">
+        <div class="mb-8 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p class="text-sm text-slate-500">Today Focus</p>
-            <p class="mt-1 font-semibold text-emerald-950">Personal Site v0.1</p>
+            <p class="text-sm text-slate-500">核心项目</p>
+            <p class="mt-1 font-semibold text-emerald-950">LeafVault</p>
           </div>
-          <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">Astro</span>
+          <span class="hidden rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800 sm:inline-flex">全栈开发</span>
         </div>
 
         <div class="space-y-4">
-          <div class="rounded-2xl border border-emerald-900/10 bg-white/70 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <p class="text-sm font-semibold text-emerald-950">☘ LeafVault</p>
-            <p class="mt-1 text-sm leading-6 text-slate-500">安全登录、加密日记、本地优先。</p>
+          <div class="rounded-2xl border border-white/45 bg-gradient-to-br from-white/40 via-emerald-50/30 to-lime-50/20 p-4 shadow-sm ring-1 ring-white/30 backdrop-blur-md transition hover:-translate-y-1 hover:from-white/50 hover:via-emerald-50/40 hover:to-lime-50/30 hover:shadow-lg">
+            <p class="text-sm font-semibold text-emerald-950">🔐 安全与隐私</p>
+            <p class="mt-1 text-sm leading-6 text-slate-500">加密存储、安全登录、CORS/CSP、密文备份。</p>
           </div>
-          <div class="rounded-2xl border border-emerald-900/10 bg-white/70 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <p class="text-sm font-semibold text-emerald-950">🌊 Blog</p>
-            <p class="mt-1 text-sm leading-6 text-slate-500">写开发日志、学习笔记和项目复盘。</p>
+          <div class="rounded-2xl border border-white/45 bg-gradient-to-br from-white/40 via-emerald-50/30 to-lime-50/20 p-4 shadow-sm ring-1 ring-white/30 backdrop-blur-md transition hover:-translate-y-1 hover:from-white/50 hover:via-emerald-50/40 hover:to-lime-50/30 hover:shadow-lg">
+            <p class="text-sm font-semibold text-emerald-950">📱 本地优先 + PWA</p>
+            <p class="mt-1 text-sm leading-6 text-slate-500">IndexedDB 离线缓存、移动端适配、可安装。</p>
           </div>
-          <div class="rounded-2xl border border-emerald-900/10 bg-white/70 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <p class="text-sm font-semibold text-emerald-950">🚗 Vehicle</p>
-            <p class="mt-1 text-sm leading-6 text-slate-500">智能车辆、自动驾驶和工程实践。</p>
+          <div class="rounded-2xl border border-white/45 bg-gradient-to-br from-white/40 via-emerald-50/30 to-lime-50/20 p-4 shadow-sm ring-1 ring-white/30 backdrop-blur-md transition hover:-translate-y-1 hover:from-white/50 hover:via-emerald-50/40 hover:to-lime-50/30 hover:shadow-lg">
+            <p class="text-sm font-semibold text-emerald-950">🐳 可部署可自托管</p>
+            <p class="mt-1 text-sm leading-6 text-slate-500">Docker 部署、pytest 测试、数据恢复与同步。</p>
           </div>
         </div>
       </div>
