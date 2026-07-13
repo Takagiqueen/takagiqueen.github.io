@@ -11,33 +11,183 @@ import FocusIcon from './FocusIcon.astro';
   />
 
   <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
-      <FocusIcon kind="code" />
-      <h3 class="mt-4 font-bold text-emerald-950">工程开发</h3>
-      <p class="mt-3 leading-7 text-slate-600">
-        独立做了 LeafVault：FastAPI 写后端、SQLite 管数据、PWA 前端、Docker 部署。
-      </p>
+    <div data-reveal class="h-full">
+      <div data-about-card class="about-card glass-card relative h-full overflow-hidden rounded-[1.75rem] p-6">
+        <span class="about-card-spotlight pointer-events-none absolute inset-0" aria-hidden="true"></span>
+        <div class="relative z-[1]">
+          <div class="about-card-icon inline-flex"><FocusIcon kind="code" /></div>
+          <h3 class="about-card-title mt-4 font-bold text-emerald-950">工程开发</h3>
+          <p class="about-card-description mt-3 leading-7 text-slate-600">
+            独立做了 LeafVault：FastAPI 写后端、SQLite 管数据、PWA 前端、Docker 部署。
+          </p>
+        </div>
+      </div>
     </div>
-    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
-      <FocusIcon kind="vehicle" />
-      <h3 class="mt-4 font-bold text-emerald-950">智能车辆</h3>
-      <p class="mt-3 leading-7 text-slate-600">
-        智能车辆工程专业在读，参与 Apollo 自动驾驶比赛，学习路径规划和仿真技术。
-      </p>
+    <div data-reveal class="h-full">
+      <div data-about-card class="about-card glass-card relative h-full overflow-hidden rounded-[1.75rem] p-6">
+        <span class="about-card-spotlight pointer-events-none absolute inset-0" aria-hidden="true"></span>
+        <div class="relative z-[1]">
+          <div class="about-card-icon inline-flex"><FocusIcon kind="vehicle" /></div>
+          <h3 class="about-card-title mt-4 font-bold text-emerald-950">智能车辆</h3>
+          <p class="about-card-description mt-3 leading-7 text-slate-600">
+            智能车辆工程专业在读，参与 Apollo 自动驾驶比赛，学习路径规划和仿真技术。
+          </p>
+        </div>
+      </div>
     </div>
-    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
-      <FocusIcon kind="visual" />
-      <h3 class="mt-4 font-bold text-emerald-950">视觉创作</h3>
-      <p class="mt-3 leading-7 text-slate-600">
-        学过 Blender、Lightroom、摄影构图和光影，对画面和配色比较敏感。
-      </p>
+    <div data-reveal class="h-full">
+      <div data-about-card class="about-card glass-card relative h-full overflow-hidden rounded-[1.75rem] p-6">
+        <span class="about-card-spotlight pointer-events-none absolute inset-0" aria-hidden="true"></span>
+        <div class="relative z-[1]">
+          <div class="about-card-icon inline-flex"><FocusIcon kind="visual" /></div>
+          <h3 class="about-card-title mt-4 font-bold text-emerald-950">视觉创作</h3>
+          <p class="about-card-description mt-3 leading-7 text-slate-600">
+            学过 Blender、Lightroom、摄影构图和光影，对画面和配色比较敏感。
+          </p>
+        </div>
+      </div>
     </div>
-    <div data-reveal class="group glass-card rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(6,78,59,0.13)]">
-      <FocusIcon kind="language" />
-      <h3 class="mt-4 font-bold text-emerald-950">English Fluency</h3>
-      <p class="mt-3 leading-7 text-slate-600">
-        Passed CET-6, keep building vocabulary every day, and aim to read technical documentation fluently with strong spoken English.
-      </p>
+    <div data-reveal class="h-full">
+      <div data-about-card class="about-card glass-card relative h-full overflow-hidden rounded-[1.75rem] p-6">
+        <span class="about-card-spotlight pointer-events-none absolute inset-0" aria-hidden="true"></span>
+        <div class="relative z-[1]">
+          <div class="about-card-icon inline-flex"><FocusIcon kind="language" /></div>
+          <h3 class="about-card-title mt-4 font-bold text-emerald-950">English Fluency</h3>
+          <p class="about-card-description mt-3 leading-7 text-slate-600">
+            Passed CET-6, keep building vocabulary every day, and aim to read technical documentation fluently with strong spoken English.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .about-card {
+    --about-pointer-x: 50%;
+    --about-pointer-y: 50%;
+    transform: translateY(0);
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 220ms ease,
+      box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .about-card-spotlight {
+    background: radial-gradient(
+      260px circle at var(--about-pointer-x) var(--about-pointer-y),
+      rgba(255, 255, 255, 0.48),
+      rgba(110, 231, 183, 0.12) 32%,
+      transparent 68%
+    );
+    opacity: 0;
+    transition: opacity 220ms ease;
+  }
+
+  .about-card-icon {
+    transform: translateY(0) rotate(0deg);
+    transform-origin: 45% 70%;
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .about-card-title,
+  .about-card-description {
+    transition: color 220ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .about-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(167, 243, 208, 0.72);
+      box-shadow:
+        0 24px 68px rgba(6, 78, 59, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    }
+
+    .about-card:hover .about-card-icon {
+      transform: translateY(-3px) rotate(-2deg) scale(1.03);
+    }
+
+    .about-card:hover .about-card-title {
+      color: rgb(4 120 87);
+    }
+
+    .about-card:hover .about-card-description {
+      color: rgb(71 85 105);
+    }
+
+    .about-card:hover .about-card-spotlight,
+    .about-card.is-pointer-active .about-card-spotlight {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-card,
+    .about-card-icon {
+      transform: none !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .about-card-spotlight {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function initAboutCards() {
+      document.querySelectorAll<HTMLElement>('[data-about-card]').forEach((card) => {
+        if (card.dataset.pointerBound === 'true') return;
+        card.dataset.pointerBound = 'true';
+
+        let frame = 0;
+        let rect: DOMRect | undefined;
+        let pointerX = 0;
+        let pointerY = 0;
+
+        const updateSpotlight = () => {
+          frame = 0;
+          if (!rect) return;
+
+          const x = Math.min(Math.max(pointerX - rect.left, 0), rect.width);
+          const y = Math.min(Math.max(pointerY - rect.top, 0), rect.height);
+          card.style.setProperty('--about-pointer-x', `${x}px`);
+          card.style.setProperty('--about-pointer-y', `${y}px`);
+        };
+
+        card.addEventListener('pointerenter', () => {
+          if (!finePointer.matches || reducedMotion.matches) return;
+          rect = card.getBoundingClientRect();
+          card.classList.add('is-pointer-active');
+        });
+
+        card.addEventListener('pointermove', (event) => {
+          if (!finePointer.matches || reducedMotion.matches) return;
+          pointerX = event.clientX;
+          pointerY = event.clientY;
+          if (!frame) frame = requestAnimationFrame(updateSpotlight);
+        }, { passive: true });
+
+        const resetCard = () => {
+          if (frame) cancelAnimationFrame(frame);
+          frame = 0;
+          rect = undefined;
+          card.classList.remove('is-pointer-active');
+          card.style.setProperty('--about-pointer-x', '50%');
+          card.style.setProperty('--about-pointer-y', '50%');
+        };
+
+        card.addEventListener('pointerleave', resetCard);
+        card.addEventListener('pointercancel', resetCard);
+      });
+    }
+
+    initAboutCards();
+    document.addEventListener('astro:page-load', initAboutCards);
+  })();
+</script>

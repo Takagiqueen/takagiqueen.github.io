@@ -23,19 +23,21 @@ const leafVaultFeatures = [
 ] as const;
 ---
 
-<section class="grid min-h-0 items-start gap-8 py-8 sm:py-14 lg:min-h-[calc(100vh-6rem)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:py-16">
-  <div class="min-w-0">
+<section data-hero-interactive class="hero-interactive relative isolate grid min-h-0 items-start gap-8 py-8 sm:py-14 lg:min-h-[calc(100vh-6rem)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:py-16">
+  <div aria-hidden="true" class="hero-pointer-aura"></div>
+
+  <div class="relative z-10 min-w-0">
     <p class="fade-up inline-flex max-w-full items-center gap-2 rounded-full border border-emerald-900/10 bg-white/60 px-4 py-2 text-sm text-emerald-800 shadow-sm backdrop-blur">
       <span class="size-2 rounded-full bg-emerald-500"></span>
       智能车辆工程 · Web 全栈 · LeafVault
     </p>
 
-    <h1 class="fade-up fade-up-delay-1 mt-6 max-w-3xl break-all text-[clamp(2.15rem,10vw,3rem)] font-black leading-[0.98] tracking-tight text-emerald-950 sm:break-words sm:text-6xl lg:text-7xl">
-      把想法，
+    <h1 class="mt-6 max-w-3xl break-all text-[clamp(2.15rem,10vw,3rem)] font-black leading-[0.98] tracking-tight text-emerald-950 sm:break-words sm:text-6xl lg:text-7xl">
+      <span class="hero-title-line hero-title-line-lead inline-block">把想法，</span>
       <br class="sm:hidden" />
-      <span class="relative inline break-all sm:inline-block sm:break-words">
+      <span data-hero-glow-text data-text="做成发光的产品" class="hero-title-line hero-title-line-glow hero-glow-text relative inline-block">
         做成发光的产品
-<span class="absolute -bottom-2 left-0 hidden h-3 w-full rounded-full bg-emerald-200/70 -z-10 sm:block"></span>
+        <span aria-hidden="true" class="hero-title-underline absolute -bottom-2 left-0 hidden h-3 w-full rounded-full bg-emerald-200/70 sm:block"></span>
       </span>
     </h1>
 
@@ -45,17 +47,18 @@ const leafVaultFeatures = [
     </p>
 
     <div class="fade-up fade-up-delay-3 mt-8 flex flex-wrap gap-3">
-      <a href="/projects/leafvault" class="rounded-full bg-emerald-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-1 hover:bg-emerald-800">
+      <a data-magnetic href="/projects/leafvault" class="hero-magnetic rounded-full bg-emerald-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-900/15 hover:bg-emerald-800">
         了解 LeafVault
       </a>
-      <a href="/blog" class="rounded-full border border-emerald-900/10 bg-white/65 px-6 py-3 text-sm font-semibold text-emerald-900 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:bg-white">
+      <a data-magnetic href="/blog" class="hero-magnetic rounded-full border border-emerald-900/10 bg-white/65 px-6 py-3 text-sm font-semibold text-emerald-900 shadow-sm backdrop-blur hover:bg-white">
         阅读学习笔记
       </a>
     </div>
   </div>
 
-  <div class="fade-up fade-up-delay-2 relative mx-auto mt-2 min-w-0 w-full max-w-full sm:max-w-lg lg:mt-0">
-    <div class="relative overflow-hidden rounded-[2rem] border border-white/60 bg-gradient-to-br from-white/58 via-emerald-50/38 to-lime-50/28 p-4 shadow-[0_22px_70px_rgba(6,78,59,0.13)] ring-1 ring-white/50 backdrop-blur-2xl sm:p-5 sm:from-white/48 sm:via-emerald-50/30 sm:to-lime-50/20">
+  <div class="fade-up fade-up-delay-2 relative z-10 mx-auto mt-2 min-w-0 w-full max-w-full sm:max-w-lg lg:mt-0">
+    <div data-hero-panel class="hero-showcase relative overflow-hidden rounded-[2rem] border border-white/60 bg-gradient-to-br from-white/58 via-emerald-50/38 to-lime-50/28 p-4 shadow-[0_22px_70px_rgba(6,78,59,0.13)] ring-1 ring-white/50 backdrop-blur-2xl sm:p-5 sm:from-white/48 sm:via-emerald-50/30 sm:to-lime-50/20">
+      <div aria-hidden="true" class="hero-panel-light"></div>
       <div class="absolute inset-x-0 top-0 h-24 overflow-hidden opacity-70">
         <div class="absolute -left-1/3 top-0 h-full w-2/3 skew-x-[-20deg] bg-white/40 blur-sm animate-[shimmer_5s_ease-in-out_infinite]"></div>
       </div>
@@ -98,3 +101,477 @@ const leafVaultFeatures = [
     </div>
   </div>
 </section>
+
+<style>
+  .hero-interactive {
+    --hero-aura-x: 0px;
+    --hero-aura-y: 0px;
+    --hero-aura-opacity: 0;
+    --hero-panel-x: 0px;
+    --hero-panel-y: 0px;
+    --hero-panel-rotate-x: 0deg;
+    --hero-panel-rotate-y: 0deg;
+    --hero-panel-light-x: 0px;
+    --hero-panel-light-y: 0px;
+    --hero-panel-light-opacity: 0;
+  }
+
+  .hero-pointer-aura {
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 0;
+    width: min(35rem, 88vw);
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(167, 243, 208, 0.2) 0%, rgba(186, 230, 253, 0.1) 38%, transparent 72%);
+    opacity: var(--hero-aura-opacity);
+    transform: translate3d(calc(-50% + var(--hero-aura-x)), calc(-50% + var(--hero-aura-y)), 0);
+    transition: opacity 220ms ease;
+    contain: layout paint style;
+  }
+
+  .hero-title-line {
+    animation: hero-title-reveal 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-title-line-lead {
+    animation-delay: 120ms;
+  }
+
+  .hero-title-line-glow {
+    animation-delay: 240ms;
+  }
+
+  .hero-glow-text {
+    --hero-title-light-x: 50%;
+    --hero-title-light-y: 50%;
+    --hero-title-light-opacity: 0;
+    isolation: isolate;
+  }
+
+  .hero-glow-text::before,
+  .hero-glow-text::after {
+    content: attr(data-text);
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .hero-glow-text::before {
+    background-image: radial-gradient(
+      circle 6.5rem at var(--hero-title-light-x) var(--hero-title-light-y),
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(110, 231, 183, 0.82) 34%,
+      rgba(16, 185, 129, 0.18) 62%,
+      transparent 78%
+    );
+    opacity: var(--hero-title-light-opacity);
+    transition: opacity 180ms ease;
+  }
+
+  .hero-glow-text::after {
+    background-image: linear-gradient(
+      105deg,
+      transparent 32%,
+      rgba(255, 255, 255, 0.96) 46%,
+      rgba(110, 231, 183, 0.88) 52%,
+      transparent 66%
+    );
+    background-position: 140% 50%;
+    background-size: 240% 100%;
+    animation: hero-text-shine 3600ms cubic-bezier(0.22, 1, 0.36, 1) 820ms both;
+  }
+
+  .hero-title-underline {
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: hero-underline-reveal 720ms cubic-bezier(0.22, 1, 0.36, 1) 620ms both;
+  }
+
+  .hero-magnetic {
+    --hero-magnetic-x: 0px;
+    --hero-magnetic-y: 0px;
+    --hero-magnetic-hover-y: 0px;
+    --hero-magnetic-scale: 1;
+    transform: translate3d(
+        var(--hero-magnetic-x),
+        calc(var(--hero-magnetic-y) + var(--hero-magnetic-hover-y)),
+        0
+      )
+      scale(var(--hero-magnetic-scale));
+    transition:
+      transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .hero-magnetic:active {
+    --hero-magnetic-scale: 0.98;
+  }
+
+  .hero-magnetic:focus-visible {
+    outline: 3px solid rgba(16, 185, 129, 0.32);
+    outline-offset: 4px;
+  }
+
+  .hero-showcase {
+    transform: perspective(1100px)
+      translate3d(var(--hero-panel-x), var(--hero-panel-y), 0)
+      rotateX(var(--hero-panel-rotate-x))
+      rotateY(var(--hero-panel-rotate-y));
+    transform-origin: center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  .hero-panel-light {
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 22rem;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(167, 243, 208, 0.18) 35%, transparent 70%);
+    opacity: var(--hero-panel-light-opacity);
+    transform: translate3d(calc(-50% + var(--hero-panel-light-x)), calc(-50% + var(--hero-panel-light-y)), 0);
+  }
+
+  .hero-interactive.is-pointer-active .hero-pointer-aura,
+  .hero-interactive.is-pointer-active .hero-showcase,
+  .hero-interactive.is-pointer-active .hero-panel-light {
+    will-change: transform, opacity;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hero-magnetic:hover {
+      --hero-magnetic-hover-y: -3px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-pointer-aura,
+    .hero-panel-light {
+      display: none;
+    }
+
+    .hero-showcase,
+    .hero-magnetic {
+      transform: none !important;
+    }
+
+    .hero-glow-text::before,
+    .hero-glow-text::after {
+      display: none;
+    }
+  }
+
+  @keyframes hero-title-reveal {
+    from {
+      opacity: 0;
+      filter: blur(3px);
+      transform: translate3d(0, 14px, 0);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes hero-text-shine {
+    0% {
+      background-position: 140% 50%;
+      opacity: 0;
+    }
+    14%,
+    82% {
+      opacity: 0.9;
+    }
+    100% {
+      background-position: -45% 50%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes hero-underline-reveal {
+    0% {
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(52, 211, 153, 0);
+      transform: scaleX(0);
+    }
+    72% {
+      opacity: 0.78;
+      box-shadow: 0 0 18px rgba(52, 211, 153, 0.18);
+      transform: scaleX(1);
+    }
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.08);
+      transform: scaleX(1);
+    }
+  }
+</style>
+
+<script>
+  type MotionValues = {
+    auraX: number;
+    auraY: number;
+    auraOpacity: number;
+    panelX: number;
+    panelY: number;
+    rotateX: number;
+    rotateY: number;
+    panelLightX: number;
+    panelLightY: number;
+    panelLightOpacity: number;
+    titleX: number;
+    titleY: number;
+    titleOpacity: number;
+  };
+
+  type MagneticMotion = {
+    element: HTMLElement;
+    rect: DOMRect | null;
+    x: number;
+    y: number;
+    targetX: number;
+    targetY: number;
+  };
+
+  interface HeroMotionWindow extends Window {
+    __takagiHeroMotionCleanup?: () => void;
+    __takagiHeroPageLoad?: () => void;
+    __takagiHeroBeforeSwap?: () => void;
+  }
+
+  const motionWindow = window as HeroMotionWindow;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const createMotionValues = (): MotionValues => ({
+    auraX: 0,
+    auraY: 0,
+    auraOpacity: 0,
+    panelX: 0,
+    panelY: 0,
+    rotateX: 0,
+    rotateY: 0,
+    panelLightX: 0,
+    panelLightY: 0,
+    panelLightOpacity: 0,
+    titleX: 0,
+    titleY: 0,
+    titleOpacity: 0,
+  });
+
+  function initHeroMotion() {
+    motionWindow.__takagiHeroMotionCleanup?.();
+    motionWindow.__takagiHeroMotionCleanup = undefined;
+
+    const hero = document.querySelector<HTMLElement>('[data-hero-interactive]');
+    if (!hero || !finePointer.matches || reducedMotion.matches) return;
+
+    const panel = hero.querySelector<HTMLElement>('[data-hero-panel]');
+    const glowText = hero.querySelector<HTMLElement>('[data-hero-glow-text]');
+    const magneticItems: MagneticMotion[] = Array.from(hero.querySelectorAll<HTMLElement>('[data-magnetic]')).map((element) => ({
+      element,
+      rect: null,
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0,
+    }));
+
+    if (!panel || !glowText) return;
+
+    const heroElement: HTMLElement = hero;
+    const glowTextElement: HTMLElement = glowText;
+
+    const controller = new AbortController();
+    const current = createMotionValues();
+    const target = createMotionValues();
+    let heroRect: DOMRect | null = null;
+    let titleRect: DOMRect | null = null;
+    let frameId = 0;
+    let pointerInside = false;
+
+    const interpolate = (from: number, to: number, amount = 0.16) => from + (to - from) * amount;
+    const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+    function invalidateRects() {
+      heroRect = null;
+      titleRect = null;
+      magneticItems.forEach((item) => {
+        item.rect = null;
+      });
+    }
+
+    function render() {
+      heroElement.style.setProperty('--hero-aura-x', `${current.auraX.toFixed(2)}px`);
+      heroElement.style.setProperty('--hero-aura-y', `${current.auraY.toFixed(2)}px`);
+      heroElement.style.setProperty('--hero-aura-opacity', current.auraOpacity.toFixed(3));
+      heroElement.style.setProperty('--hero-panel-x', `${current.panelX.toFixed(2)}px`);
+      heroElement.style.setProperty('--hero-panel-y', `${current.panelY.toFixed(2)}px`);
+      heroElement.style.setProperty('--hero-panel-rotate-x', `${current.rotateX.toFixed(3)}deg`);
+      heroElement.style.setProperty('--hero-panel-rotate-y', `${current.rotateY.toFixed(3)}deg`);
+      heroElement.style.setProperty('--hero-panel-light-x', `${current.panelLightX.toFixed(2)}px`);
+      heroElement.style.setProperty('--hero-panel-light-y', `${current.panelLightY.toFixed(2)}px`);
+      heroElement.style.setProperty('--hero-panel-light-opacity', current.panelLightOpacity.toFixed(3));
+      glowTextElement.style.setProperty('--hero-title-light-x', `${current.titleX.toFixed(2)}px`);
+      glowTextElement.style.setProperty('--hero-title-light-y', `${current.titleY.toFixed(2)}px`);
+      glowTextElement.style.setProperty('--hero-title-light-opacity', current.titleOpacity.toFixed(3));
+
+      magneticItems.forEach((item) => {
+        item.element.style.setProperty('--hero-magnetic-x', `${item.x.toFixed(2)}px`);
+        item.element.style.setProperty('--hero-magnetic-y', `${item.y.toFixed(2)}px`);
+      });
+    }
+
+    function tick() {
+      frameId = 0;
+      let largestDifference = 0;
+
+      (Object.keys(current) as Array<keyof MotionValues>).forEach((key) => {
+        const difference = Math.abs(target[key] - current[key]);
+        largestDifference = Math.max(largestDifference, difference);
+        current[key] = difference < 0.01 ? target[key] : interpolate(current[key], target[key]);
+      });
+
+      magneticItems.forEach((item) => {
+        largestDifference = Math.max(
+          largestDifference,
+          Math.abs(item.targetX - item.x),
+          Math.abs(item.targetY - item.y),
+        );
+        item.x = Math.abs(item.targetX - item.x) < 0.01 ? item.targetX : interpolate(item.x, item.targetX, 0.22);
+        item.y = Math.abs(item.targetY - item.y) < 0.01 ? item.targetY : interpolate(item.y, item.targetY, 0.22);
+      });
+
+      render();
+
+      if (largestDifference > 0.01) {
+        frameId = window.requestAnimationFrame(tick);
+      } else if (!pointerInside) {
+        heroElement.classList.remove('is-pointer-active');
+      }
+    }
+
+    function scheduleFrame() {
+      if (!frameId) frameId = window.requestAnimationFrame(tick);
+    }
+
+    function resetMotion() {
+      pointerInside = false;
+      target.auraX = 0;
+      target.auraY = 0;
+      target.auraOpacity = 0;
+      target.panelX = 0;
+      target.panelY = 0;
+      target.rotateX = 0;
+      target.rotateY = 0;
+      target.panelLightX = 0;
+      target.panelLightY = 0;
+      target.panelLightOpacity = 0;
+      target.titleOpacity = 0;
+      magneticItems.forEach((item) => {
+        item.targetX = 0;
+        item.targetY = 0;
+      });
+      scheduleFrame();
+    }
+
+    function handlePointerMove(event: PointerEvent) {
+      heroRect ??= heroElement.getBoundingClientRect();
+      titleRect ??= glowTextElement.getBoundingClientRect();
+      magneticItems.forEach((item) => {
+        item.rect ??= item.element.getBoundingClientRect();
+      });
+
+      const rect = heroRect;
+      const normalizedX = clamp(((event.clientX - rect.left) / rect.width - 0.5) * 2, -1, 1);
+      const normalizedY = clamp(((event.clientY - rect.top) / rect.height - 0.5) * 2, -1, 1);
+
+      pointerInside = true;
+      heroElement.classList.add('is-pointer-active');
+      target.auraX = event.clientX - rect.left - rect.width / 2;
+      target.auraY = event.clientY - rect.top - rect.height / 2;
+      target.auraOpacity = 1;
+      target.panelX = normalizedX * 4;
+      target.panelY = normalizedY * 3;
+      target.rotateX = normalizedY * -1.6;
+      target.rotateY = normalizedX * 2.2;
+      target.panelLightX = normalizedX * 112;
+      target.panelLightY = normalizedY * 88;
+      target.panelLightOpacity = 1;
+
+      const textRect = titleRect;
+      const isNearTitle =
+        event.clientX >= textRect.left - 20 &&
+        event.clientX <= textRect.right + 20 &&
+        event.clientY >= textRect.top - 14 &&
+        event.clientY <= textRect.bottom + 14;
+      target.titleX = clamp(event.clientX - textRect.left, 0, textRect.width);
+      target.titleY = clamp(event.clientY - textRect.top, 0, textRect.height);
+      target.titleOpacity = isNearTitle ? 1 : 0;
+
+      magneticItems.forEach((item) => {
+        const itemRect = item.rect;
+        if (!itemRect) return;
+        const isOver =
+          event.clientX >= itemRect.left - 6 &&
+          event.clientX <= itemRect.right + 6 &&
+          event.clientY >= itemRect.top - 6 &&
+          event.clientY <= itemRect.bottom + 6;
+
+        item.targetX = isOver ? clamp((event.clientX - (itemRect.left + itemRect.width / 2)) * 0.045, -3, 3) : 0;
+        item.targetY = isOver ? clamp((event.clientY - (itemRect.top + itemRect.height / 2)) * 0.05, -2.5, 2.5) : 0;
+      });
+
+      scheduleFrame();
+    }
+
+    heroElement.addEventListener('pointermove', handlePointerMove, { signal: controller.signal });
+    heroElement.addEventListener('pointerleave', resetMotion, { signal: controller.signal });
+    heroElement.addEventListener('pointercancel', resetMotion, { signal: controller.signal });
+    window.addEventListener('resize', invalidateRects, { signal: controller.signal });
+    window.addEventListener('scroll', invalidateRects, { passive: true, signal: controller.signal });
+    document.addEventListener(
+      'visibilitychange',
+      () => {
+        if (document.hidden) resetMotion();
+      },
+      { signal: controller.signal },
+    );
+
+    motionWindow.__takagiHeroMotionCleanup = () => {
+      controller.abort();
+      if (frameId) window.cancelAnimationFrame(frameId);
+      heroElement.classList.remove('is-pointer-active');
+      heroElement.removeAttribute('style');
+      glowTextElement.removeAttribute('style');
+      magneticItems.forEach((item) => item.element.removeAttribute('style'));
+    };
+  }
+
+  if (motionWindow.__takagiHeroPageLoad) {
+    document.removeEventListener('astro:page-load', motionWindow.__takagiHeroPageLoad);
+  }
+  if (motionWindow.__takagiHeroBeforeSwap) {
+    document.removeEventListener('astro:before-swap', motionWindow.__takagiHeroBeforeSwap);
+  }
+
+  motionWindow.__takagiHeroPageLoad = initHeroMotion;
+  motionWindow.__takagiHeroBeforeSwap = () => motionWindow.__takagiHeroMotionCleanup?.();
+  document.addEventListener('astro:page-load', motionWindow.__takagiHeroPageLoad);
+  document.addEventListener('astro:before-swap', motionWindow.__takagiHeroBeforeSwap);
+  initHeroMotion();
+</script>
